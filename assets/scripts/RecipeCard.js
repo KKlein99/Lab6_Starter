@@ -122,6 +122,22 @@ class RecipeCard extends HTMLElement {
     orgg.classList.add("organization");
     orgg.append(org);
     card.appendChild(orgg);
+    
+    let div=document.createElement('div');
+    temp=searchForKey(data,"ratingValue");
+    div.classList.add("rating");
+    if(temp){
+      let span=document.createElement('span');
+      span=temp;
+      div.appendChild(span);
+      let img2=document.createElement('img');
+      img2.src='assets/images/icons/${round}-star.svg';
+      img2.alt=5;
+      div.appendChild(img2);
+    }
+    else{
+
+    }
 
     temp=searchForKey(data,"totalTime");
     let time=convertTime(temp);

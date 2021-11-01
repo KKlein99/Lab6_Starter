@@ -64,11 +64,12 @@ function createRecipeCards() {
 
   // Part 1 Expose - TODO
   let main=document.querySelector('main');
-  for(let i=0;i<recipes.length;i=i+1){
+  for(let i=0;i<recipes.length;i++){
     let element=document.createElement('recipe-card');
     element.data=recipeData[i];
-    main.append(element);
+    main.appendChild(element);
   }
+  
 }
 
 function bindShowMore() {

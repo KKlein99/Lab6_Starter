@@ -102,7 +102,7 @@ class RecipeCard extends HTMLElement {
 
     // Part 1 Expose - TODO
     //image
-    let temp=searchForKey(data,"thmbnailUr");
+    let temp=searchForKey(data,"thumbnailUrl");
     let img=document.createElement("img");
     img.src=temp;
     temp=searchForKey(data,"headline");
@@ -126,19 +126,18 @@ class RecipeCard extends HTMLElement {
     temp=searchForKey(data,"totalTime");
     let time=convertTime(temp);
     let timetext=document.createElement("time");
-    timetext.appendChild(time);
+    timetext.append(time);
     card.appendChild(timetext);
 
     temp=searchForKey(data,"recipeIngredient");
     let ing=createIngredientList(temp);
     let ingtext=document.createElement("p");
     ingtext.classList.add("ingredients");
-    ingtext.appendChild(ing);
+    ingtext.append(ing);
     card.appendChild(ingtext);
 
     this.shadowRoot.appendChild(styleElem);
     this.shadowRoot.appendChild(card);
-    this.attachShadow({mode: 'close'});
   }
 }
 

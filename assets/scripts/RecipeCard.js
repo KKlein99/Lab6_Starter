@@ -101,11 +101,44 @@ class RecipeCard extends HTMLElement {
     // created in the constructor()
 
     // Part 1 Expose - TODO
-    let temp=searchForKey(datam,'thmbnailUrl');
-    let img=document.createElement('img');
+    //image
+    let temp=searchForKey(data,"thmbnailUr");
+    let img=document.createElement("img");
     img.src=temp;
+    temp=searchForKey(data,"headline");
+    img.alt=temp;
+    card.appendChild(img);
+
+    let title=document.createElement("p");
+    let link=document.createElement("a");
+    let url=getUrl(data);
+    link.href=url;
+    link.append(temp);
+    title.appendChild(link);
+    card.appendChild(title);
     
-    
+    let org=getOrganization(data);
+    let orgg=document.createElement("p");
+    orgg.classList.add("organization");
+    orgg.append(org);
+    card.appendChild(orgg);
+
+    temp=searchForKey(data,"totalTime");
+    let time=convertTime(temp);
+    let timetext=document.createElement("time");
+    timetext.appendChild(time);
+    card.appendChild(timetext);
+
+    temp=searchForKey(data,"recipeIngredient");
+    let ing=createIngredientList(temp);
+    let ingtext=document.createElement("p");
+    ingtext.classList.add("ingredients");
+    ingtext.appendChild(ing);
+    card.appendChild(ingtext);
+
+    this.shadowRoot.appendChild(styleElem);
+    this.shadowRoot.appendChild(card);
+    this.attachShadow({mode: 'close'});
   }
 }
 
